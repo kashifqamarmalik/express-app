@@ -9,17 +9,17 @@ const upload = multer({ dest: 'uploads/' });
 
 router.get('/', catController.cat_list_get);
 
-  
-router.post('/', upload.none(), catController.upload_cat);
+router.get('/:id', catController.cat_get);
 
+
+router.post('/', upload.single('cat'), catController.cat_create_post);
+
+
+router.put('/', catController.cat_update_put);
+
+
+router.delete('/:id', catController.cat_delete);
   
   
-  router.put('/cat', (req, res) => {
-    res.send('With this endpoint you can get cats.');
-  });
-  
-  router.delete('/cat', (req, res) => {
-    res.send('With this endpoint you can get cats.');
-  });
 
   module.exports = router;
